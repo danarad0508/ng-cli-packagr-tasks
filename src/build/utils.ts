@@ -83,15 +83,14 @@ export async function validateTypedTasks(jobs: JobMetadata[], context: NgPackage
           const contentJsonCopy = JSON.parse(JSON.stringify(contentJson));
 
           return context.registry.compile(schemaJson)
-            .pipe(
-              concatMap(validator => validator(contentJsonCopy)),
-              concatMap(validatorResult => {
-                return validatorResult.success
-                  ? of(contentJsonCopy)
-                  : throwError(new schema.SchemaValidationException(validatorResult.errors))
-                ;
-              }),
-            );
+            .then(validator => validator(contentJsonCopy))
+            .then(validatorResult => {
+              if (validatorResult.success) {
+                return contentJsonCopy;
+              } else {
+                throw new schema.SchemaValidationException(validatorResult.errors);
+              }
+            });
         })
       )
       .toPromise();
