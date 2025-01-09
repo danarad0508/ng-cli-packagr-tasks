@@ -6,7 +6,7 @@ const cwd = process.cwd();
 const srcRoot = path.join(cwd, 'src');
 const destRoot = path.join(cwd, 'dist');
 
-const toCopy = globby.sync('**/*.json', { cwd: srcRoot })
+const toCopy = globby.globbySync('**/*.json', { cwd: srcRoot })
   .map( p => ({
     from: path.join(srcRoot, p),
     to: path.join(destRoot, p),

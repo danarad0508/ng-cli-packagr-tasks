@@ -78,15 +78,15 @@ function createCopyPatterns(assetPatterns: AssetPattern[], root: string, project
   return buildCopyPatterns(root, assets);
 }
 
-async function getGlobEntries(copyPattern: CopyPattern, copyOptions: globby.GlobbyOptions) {
+async function getGlobEntries(copyPattern: CopyPattern, copyOptions: globby.Options) {
   const fullPattern = copyPattern.context + copyPattern.from.glob;
   const opts = { ...copyOptions, dot: copyPattern.from.dot };
 
-  return globby(fullPattern, opts);
+  return globby.globby(fullPattern, opts);
 }
 
 async function executeCopyPattern(copyPattern: CopyPattern,
-                                  copyOptions: globby.GlobbyOptions,
+                                  copyOptions: globby.Options,
                                   root: string,
                                   onCopy?: (from: string, to: string) => void) {
   const entries = await getGlobEntries(copyPattern, copyOptions);
@@ -120,7 +120,7 @@ async function executeCopyPattern(copyPattern: CopyPattern,
 
 async function executeCopyPatterns(copyPatterns: CopyPattern[],
                                    root: string,
-                                   copyOptions?: globby.GlobbyOptions,
+                                   copyOptions?: globby.Options,
                                    onCopy?: (pattern: CopyPattern, from: string, to: string) => void) {
   const opts = copyOptions ? { ...copyOptions } : {};
   for (const copyPattern of copyPatterns) {

@@ -1,6 +1,6 @@
 {
   "name": "ng-cli-packagr-tasks",
-  "version": "14.2.2",
+  "version": "15.2.11",
   "description": "Angular CLI Build Architect for ng-packagr with custom tasks and workflows",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -32,20 +32,21 @@
     "html"
   ],
   "dependencies": {
-    "globby": "^9.0.0"
+    "globby": "^12.0.0"
   },
   "peerDependencies": {
-    "@angular-devkit/build-angular": "~14.2.0",
-    "ng-packagr": "~14.2.0"
+    "@angular-devkit/build-angular": "^15.2.11",
+    "ng-packagr": "^15.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~14.2.0",
-    "@angular/compiler": "~14.2.0",
-    "@angular/compiler-cli": "~14.2.0",
+    "@angular-devkit/build-angular": "^15.2.11",
+    "@angular/cli": "~15.2.11",
+    "@angular/compiler": "15.2.10",
+    "@angular/compiler-cli": "^15.2.0",
     "@types/node": "18.7.1",
-    "@types/semver": "^5.5.0",
-    "ng-packagr": "~14.2.1",
-    "tslib": "^2.2.0",
-    "typescript": "~4.8.4"
+    "@types/semver": "^7.0.0",
+    "ng-packagr": "^15",
+    "tslib": "^2.3.0",
+    "typescript": "~4.9.4"
   }
 }
